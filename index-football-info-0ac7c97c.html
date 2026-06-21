@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足彩·日常笔记 | 查询与对照</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f4f7f6;
+            color: #1c2b2a;
+            line-height: 1.75;
+            padding: 28px 20px;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 12px rgba(0, 40, 30, 0.04);
+            border: 1px solid #d9e6e3;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(18, 100, 82, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* 蓝绿点缀色 */
+        .accent {
+            color: #1f7a6a;
+        }
+
+        .accent-border-left {
+            border-left: 4px solid #2b9c87;
+            padding-left: 16px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e3f2ef;
+            color: #1f6e61;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            padding: 3px 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: #0e2e28;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #3d5c55;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #d1e0dc;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #1f4d44;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #2b3f3b;
+        }
+
+        .small-note {
+            font-size: 0.9rem;
+            color: #4b6a62;
+            background: #edf5f2;
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin: 22px 0 14px;
+        }
+
+        blockquote.insight {
+            background: #f0f9f6;
+            border-left: 4px solid #2b9c87;
+            padding: 14px 20px;
+            margin: 20px 0 18px;
+            border-radius: 0 12px 12px 0;
+            font-style: normal;
+            color: #1d3d36;
+        }
+
+        blockquote.insight p {
+            margin-bottom: 4px;
+        }
+
+        .faq-mini {
+            margin-top: 18px;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #1b6859;
+            padding: 10px 0 6px;
+            border-bottom: 1px dashed #c0d5cf;
+            list-style: none;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini summary::before {
+            content: "▸ ";
+            color: #2b9c87;
+            font-size: 1.1rem;
+        }
+
+        .faq-mini details[open] summary::before {
+            content: "▾ ";
+        }
+
+        .faq-mini details p {
+            margin: 8px 0 12px 22px;
+            font-size: 0.95rem;
+            color: #2e5148;
+        }
+
+        a {
+            color: #1a7765;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        a:hover {
+            border-bottom: 1px solid #1a7765;
+        }
+
+        .footer-meta {
+            margin-top: 44px;
+            padding-top: 20px;
+            border-top: 1px solid #d4e3df;
+            font-size: 0.85rem;
+            color: #50726a;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-meta span {
+            opacity: 0.7;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #2b9c87;
+            color: #1b6859;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #2b9c87;
+            color: white;
+            border-color: #2b9c87;
+        }
+
+        .hero-simple {
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 22px 18px;
+            }
+            body {
+                padding: 20px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 标题区 / 类似博客文章头部 -->
+        <div class="hero-simple">
+            <span class="tag">📋 日常笔记</span>
+            <h1>足彩查询与对照：<br>一种安静的延伸阅读习惯</h1>
+            <div class="subhead">
+                不是每一注都需要匆忙决定，更多时候只是需要一条清晰的线索。
+            </div>
+        </div>
+
+        <!-- 正文卡片网格 -->
+        <div class="card-grid">
+            <!-- 卡片 1：正文段落 1 -->
+            <div class="card">
+                <h2>从查询开始的一天</h2>
+                <p>打开浏览器，输入熟悉的地址，手指比脑子快。有时候并不是要买什么，只是想看看这周有哪些对阵，或者某个联赛的积分又发生了什么变化。把<a href="https://index-football-lottery.com">足彩</a>当作一个日常信息入口，像翻开一本定期更新的手册，反而让人更踏实。</p>
+                <p>我习惯先扫一眼近期的场次列表——那些熟悉的队名、时间、赔率波动，它们像一种安静的语言，不需要立刻回应。页面干净一点，我停留的时间就长一点。最近发现很多网站塞满了弹窗和广告，反而让查询变成一种负担。</p>
+            </div>
+
+            <!-- 卡片 2：正文段落 2 + 引用提示 -->
+            <div class="card">
+                <h2>对照与闲笔</h2>
+                <p>几周前我开始做一个实验：把每轮比赛的预期和实际结果随手记在笔记本上，不是为了验证什么，只是好奇自己能保持这种对照多久。过程中发现大多数人讨论的焦点其实很窄——输赢之外，还有阵容、天气、赛前发布会上的只言片语。</p>
+                <blockquote class="insight">
+                    <p>“信息本身并不产生判断，但反复对照会让判断的轮廓慢慢清晰。”  —— 一位老球迷的留言</p>
+                </blockquote>
+                <p>如果你也喜欢在周末午后边喝茶边翻看各类数据，那种感觉接近一种休憩。这时候一个结构清晰、响应迅速的页面就显得重要了。</p>
+            </div>
+
+            <!-- 卡片 3：延伸阅读 + 场景描述 -->
+            <div class="card">
+                <h2>延伸的路径</h2>
+                <p>很多次我只是想查一下某支球队的近期战绩，结果顺着链接读了半天的战术分析。延伸阅读是这类内容的魅力所在——它不强迫你，但给你留好了岔路。我常用的方法是打开两三个页面并排看：一个看赔率，一个看新闻，另一个可能就是纯粹的记录工具。</p>
+                <p>作为日常查询的起点，<a href="https://index-football-lottery.com">足彩</a>这个入口对我而言更像一个索引：它指向的不仅是数据，还有一种随时可以开始又随时可以停下的节奏。不用登录，不用关注，打开即用——这样的工具越来越少，反而更值得保留。</p>
+                <div class="small-note">
+                    💡 一个小建议：把常用链接放在浏览器书签栏的第一层，比任何收藏夹都高效。
+                </div>
+            </div>
+
+            <!-- 卡片 4：FAQ 摘要 + 访问句 -->
+            <div class="card">
+                <h2>偶尔被问到的问题</h2>
+                <div class="faq-mini">
+                    <details>
+                        <summary>需要注册才能查询吗？</summary>
+                        <p>大多数基础查询不需要登录，直接打开页面即可浏览联赛、对阵和指数变化。部分深度统计可能需要账号，但日常使用基本无障碍。</p>
+                    </details>
+                    <details>
+                        <summary>移动端体验如何？</summary>
+                        <p>现在很多站点针对手机做了适配，卡片式布局和字体大小都更适合单手操作。建议用自带浏览器，关闭“请求桌面网站”选项。</p>
+                    </details>
+                    <details>
+                        <summary>信息更新频率怎么样？</summary>
+                        <p>主流联赛的赔率和赛程通常实时或接近实时更新，赛果一般在比赛结束后几分钟内同步。二次确认可以多对比两个来源。</p>
+                    </details>
+                </div>
+                <p style="margin-top: 18px;">如果你也喜欢这种克制的查询方式，可以把它加入日常浏览的路线——下一次打开时，它还是那个样子，不多不少。</p>
+            </div>
+        </div>
+
+        <!-- 额外的引用 / 访问句 -->
+        <div style="margin: 28px 0 10px;" class="accent-border-left">
+            <p style="font-size: 1.05rem; margin-bottom: 0;">无论你是为了对照、记录，还是单纯想多了解一点，<a href="https://index-football-lottery.com">足彩</a>这个词本身就已经包含了许多人的日常。页面就在那里，随时可以翻开。</p>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-meta">
+            <span>文章 · 日常查询笔记</span>
+            <span style="display: flex; gap: 12px; align-items: center;">
+                <span class="btn-outline" style="pointer-events: none; opacity: 0.6;">简单 · 克制</span>
+                <span style="font-size: 0.8rem;">#795149abc6713380</span>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
